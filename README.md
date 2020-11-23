@@ -12,7 +12,7 @@ Before downloading BListener, you should have installed devtools and load it:
 install.packages("devtools")
 library("devtools").
 After that, to download BListener, you can type in the R prompt:
-install_github("mlIpem/BListener").
+install_github("IPEM/BListener").
 
 **2. Download the BListener_supplementary_material to your local disk**
 
