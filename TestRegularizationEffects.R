@@ -1,15 +1,13 @@
 # 3.2. Regularization effects----
 # Figure 3
-
-setwd('/Volumes/ASIL_Data/Marc/BListener package')
 library(reshape2); library(tseries)
 library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 
 ### Prepare functions of BListener package an other
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLpost.R")
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLmain.R")
-source("/Volumes/ASIL_Data/Marc/BListener_supplementary_material/BLplot.R")
+library(BListener) 
+source("BListener_supplementary_material/BLplot.R")
+
 
 lenn = 100
 r1 <- seq(from=400,to=500,length.out=lenn)

@@ -1,19 +1,18 @@
-setwd('/Volumes/ASIL_Data/Marc/BListener_package')
+# Figure 5-8
+
 library(crqa); library(reshape2);
 library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 #### Prepare the data
-load("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/data/JustHockIt.rda")
+load("/BListener_package/Blistener/data/JustHockIt.rda")
 IOIdataset <- JustHockIt$IOIdataset
 Condition <- JustHockIt$Condition
 AllAnnotations <- JustHockIt$AllAnnotations
 AllAgency <- JustHockIt$AllAgency
 
 ### Prepare functions of BListener package an other
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLpost.R")
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLmain.R")
-source("/Volumes/ASIL_Data/MarcB/Listener_supplementary_material/R/BLplot.R")
-
+library(BListener) 
+source("BListener_supplementary_material/BLplot.R")
 
 plo <- list()
 Couple <- list(1, 4, 5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)
@@ -112,7 +111,7 @@ for (ii in c(1:2)) {
   }
 }
 
-## Plotting of Figures 4 5 6 --
+## Plotting of Figures 5 6 --
 # FIGURE 5 ----
 Fig5 <- arrangeGrob(
   OutcomeTrialCoupleA[[16]][[5]]$pl,

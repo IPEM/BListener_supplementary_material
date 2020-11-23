@@ -1,19 +1,15 @@
-# MIT2019Choir
 # Figure 4
-
-#rm(list = ls())
-setwd('/Volumes/ASIL_Data/Marc/BListener_package')
 library(crqa); library(reshape2);
 library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 #### Prepare the data
-load("/Volumes/ASIL_Data/Marc/BListener_supplementary_material/BLdata/MIT2019Choir4MicOnsets.RData")
-load("/Volumes/ASIL_Data/Marc/BListener_supplementary_material/BLdata/MIT2019ChoirOmniMicOnsets.RData")
+#load("BListener_supplementary_material/BLdata/MIT2019Choir4MicOnsets.RData")
+#load("BListener_supplementary_material/BLdata/MIT2019ChoirOmniMicOnsets.RData")
 
 ### Prepare functions of BListener package an other
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLpost.R")
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLmain.R")
-source("/Volumes/ASIL_Data/Marc/BListener_supplementary_material/BLplot.R")
+library(BListener) 
+source("BListener_supplementary_material/BLplot.R")
+
 
 #### Run the analysis
 u <- MIT2019Choir4MicOnsets

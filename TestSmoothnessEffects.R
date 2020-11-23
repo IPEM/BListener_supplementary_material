@@ -1,18 +1,13 @@
 # 3.1 Smoothness effects----
 # Figure 2
 
-#rm(list = ls())
-
-setwd('/Volumes/ASIL_Data/Marc/BListener package')
 library(reshape2); library(tseries)
 library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 
 ### Prepare functions of BListener package an other
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLpost.R")
-source("/Volumes/ASIL_Data/Marc/BListener_package/Blistener/R/BLmain.R")
-source("/Volumes/ASIL_Data/Marc/BListener_supplementary_material/BLplot.R")
-
+library(BListener) 
+source("BListener_supplementary_material/BLplot.R")
 
 # create a sinusoidal signal
 times = seq(from=1,to=75)/75  # length.out=lenn) # we create a time sequence
