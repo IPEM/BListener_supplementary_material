@@ -16,5 +16,5 @@ install_github("IPEM/BListener").
 
 **2. Download the BListener_supplementary_material to your local disk**
 
-'BLplot.R' is used for plotting.
 'Test*.R' are scripts to reproduce all figures and play with the parameters of Blistener.
+Note that inside each 'Test*.R' script, the 'BLplot' function is loaded for plotting the outcome of the 'BLmain' function.

@@ -12,7 +12,7 @@ AllAgency <- JustHockIt$AllAgency
 
 ### Prepare functions of BListener package an other
 library(BListener) 
-source("BListener_supplementary_material/BLplot.R")
+source("./BLplot.R")
 
 plo <- list()
 Couple <- list(1, 4, 5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)

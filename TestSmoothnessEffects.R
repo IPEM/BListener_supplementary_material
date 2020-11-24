@@ -7,7 +7,7 @@ library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 ### Prepare functions of BListener package an other
 library(BListener) 
-source("BListener_supplementary_material/BLplot.R")
+source("./BLplot.R")
 
 # create a sinusoidal signal
 times = seq(from=1,to=75)/75  # length.out=lenn) # we create a time sequence

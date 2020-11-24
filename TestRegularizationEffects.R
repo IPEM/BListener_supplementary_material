@@ -6,7 +6,7 @@ library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
 ### Prepare functions of BListener package an other
 library(BListener) 
-source("BListener_supplementary_material/BLplot.R")
+source("./BLplot.R")
 
 
 lenn = 100
