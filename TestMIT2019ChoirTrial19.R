@@ -9,10 +9,11 @@ library(ggplot2); library(gridExtra); library(grid); library(GGally)
 ### Prepare functions of BListener package an other
 library(BListener) 
 source("./BLplot.R")
+data("Choir")
 
 
 #### Run the analysis
-u <- MIT2019Choir4MicOnsets
+u <- Choir$Choir4MicOnsets
 u=u[u>10]
 R <- BLmain(u,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
 Post1 <- BLpost(R)
@@ -21,7 +22,7 @@ R <- BLmain(u,g=.1,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
 Post2 <- BLpost(R)
 pl2 <- BLplot(R,0)
 
-uu <- MIT2019ChoirOmniMicOnsets
+uu <- Choir$ChoirOmniMicOnsets
 R <- BLmain(uu,g=0,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
 Post3 <- BLpost(R)
 pl3 <- BLplot(R,0)
@@ -96,6 +97,8 @@ pl4 <- BLplot(R,0)
  # TABLE
  gg2 <- arrangeGrob(
    gt1, gt2, gt3,gt4, ncol=2)
+ 
+ 
  grid.arrange(gg1,gg2, ncol=2)
 
 
