@@ -3,16 +3,16 @@
 library(crqa); library(reshape2);
 library(ggplot2); library(gridExtra); library(grid); library(GGally)
 
+### Prepare functions of BListener package an other
+library(BListener) 
+source("./BLplot.R")
+
 #### Prepare the data
-load("/BListener_package/Blistener/data/JustHockIt.rda")
+data("JustHockIt")
 IOIdataset <- JustHockIt$IOIdataset
 Condition <- JustHockIt$Condition
 AllAnnotations <- JustHockIt$AllAnnotations
 AllAgency <- JustHockIt$AllAgency
-
-### Prepare functions of BListener package an other
-library(BListener) 
-source("./BLplot.R")
 
 plo <- list()
 Couple <- list(1, 4, 5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)
@@ -119,6 +119,7 @@ OutcomeTrialCoupleA[[4]][[5]]$pl,
 OutcomeTrialCoupleB[[16]][[5]]$pl,
 OutcomeTrialCoupleB[[4]][[5]]$pl,
 ncol=2, nrow=2)
+
 
 #Tables
 T1 <- cbind(
