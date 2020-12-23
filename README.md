@@ -1,6 +1,6 @@
 ## Supplementary material
 This repository contains supplementary material for the paper
-**M.Leman(2020). Co-regulated timing in music ensembles: a Bayesian listener perspective (submitted)** (see *CoRegulatedTimingBListener.pdf*)
+**M.Leman(2020). Co-regulated timing in music ensembles: a Bayesian listener perspective (submitted)** (see pdf)
 The scripts generate all the figures in the paper. 
 By adapting parameters you can test the BListener algorithm.
 
