@@ -1,0 +1,116 @@
+---
+title: "TestMIT2019ChoirTrial19"
+author: "ML"
+date: "12/23/2020"
+output: html_document
+---
+You probably downloaded all files from 
+`github("IPEM/BListener_supplementary_material")`
+in you current working directory
+
+First we add some libraries, including `BListener`.
+Be sure that you also have `BLplot.R` in the present directory.
+
+```{r, message = FALSE, warning = FALSE}
+library(reshape2)
+library(tseries)
+library(ggplot2)
+library(gridExtra)
+library(grid)
+library(GGally)
+### Prepare functions of BListener package an other
+library(BListener)
+source("./BLplot.R")
+```
+# Generating Figure 4
+Get the data:
+```{r, message = FALSE, warning = FALSE}
+data("Choir")
+```
+Run the analysis (i) with 4 Mics, (ii) with 1 Mic:
+```{r, message = FALSE, warning = FALSE}
+u <- Choir$Choir4MicOnsets
+u=u[u>10]
+R <- BLmain(u,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
+Post1 <- BLpost(R)
+pl1 <- BLplot(R,0)
+R <- BLmain(u,g=.1,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
+Post2 <- BLpost(R)
+pl2 <- BLplot(R,0)
+
+uu <- Choir$ChoirOmniMicOnsets
+R <- BLmain(uu,g=0,outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
+Post3 <- BLpost(R)
+pl3 <- BLplot(R,0)
+R <- BLmain(uu,g=0.1, outt=1.5,tg=360,meter = c(8,4,2,1), V= .00001, W = .001)
+Post4 <- BLpost(R)
+pl4 <- BLplot(R,0)
+```
+
+Now create Figure 4:
+```{r, message = FALSE, warning = FALSE}
+  T1 <- cbind(
+    F1 = Post1$Fluctuation1,
+    F2 = Post1$Fluctuation2,
+    S = Post1$Stability
+    )
+  rownames(T1) <- c("IOI1","IOI2","IOI3","IOI4")
+  T2 <- cbind(
+    F1 = Post2$Fluctuation1,
+    F2 = Post2$Fluctuation2,
+    S = Post2$Stability
+  )
+  rownames(T2) <- c("IOI1","IOI2","IOI3","IOI4")
+  T3 <- cbind(
+    F1 = Post3$Fluctuation1,
+    F2 = Post3$Fluctuation2,
+    S = Post3$Stability
+  )
+  rownames(T3) <- c("IOI1","IOI2","IOI3","IOI4")
+  T4 <- cbind(
+    F1 = Post4$Fluctuation1,
+    F2 = Post4$Fluctuation2,
+    S = Post4$Stability
+  )
+  rownames(T4) <- c("IOI1","IOI2","IOI3","IOI4")
+  g1  <- tableGrob(round(T1,digits=2))
+  g2  <- tableGrob(round(T2,digits=2))
+  g3  <- tableGrob(round(T3,digits=2))
+  g4  <- tableGrob(round(T4,digits=2))
+  grid.newpage()
+  h <- grobHeight(g1)
+  w <- grobWidth(g1)
+  title1 <- textGrob("1", y=unit(0.5,"npc") + h, vjust=0)#, gp=gpar(fontsize=15))
+  title2 <- textGrob("2", y=unit(0.5,"npc") + h, vjust=0)#, gp=gpar(fontsize=15))
+  title3 <- textGrob("3", y=unit(0.5,"npc") + h, vjust=0)#, gp=gpar(fontsize=15))
+  title4 <- textGrob("4", y=unit(0.5,"npc") + h, vjust=0)#, gp=gpar(fontsize=15))
+  gt1 <- gTree(children=gList(g1, title1))
+  gt2 <- gTree(children=gList(g2, title2))
+  gt3 <- gTree(children=gList(g3, title3))
+  gt4 <- gTree(children=gList(g4, title4))
+  # grid.arrange(arrangeGrob(
+  #   pl1, pl2,
+  #   pl3, pl4, ncol=2))
+  # grid.arrange(arrangeGrob(
+  #   gt1, gt2, gt3,gt4, ncol=2))
+ gg1 <- arrangeGrob(
+   pl1, pl2,
+   pl3, pl4, ncol=2)
+ gg2 <- arrangeGrob(
+   gt1, gt2, gt3,gt4, ncol=2)
+ grid.arrange(gg1,gg2, ncol=2)
+```
+High resolution image:
+```{r, message = FALSE, warning = FALSE}
+library(cowplot)
+bitmap("Figure4.tiff", height = 4, width = 12, res=1200)
+plot_grid(pl1, pl2, gt1, gt2,
+                   pl3, pl4, gt3, gt4,
+                   ncol=4, 
+          rel_heights = c(1/6, 1/6, 1/12,1/12),
+          rel_widths = c(1/4,1/4,1/8,1/8)
+                   )
+dev.off()
+par(mfrow = c(1,1))
+```
+
